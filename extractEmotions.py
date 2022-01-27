@@ -5,6 +5,7 @@ import time
 
 from pysentimiento import create_analyzer
 
+# the functon for pre-processing: removing noise
 def removeNoise(text):
 
     CLEANR = re.compile('<.*?>')
