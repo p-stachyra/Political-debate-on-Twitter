@@ -5,6 +5,6 @@ A fraction of correctly classified emotions: model's accuracy
                 If a manual evaluation assigns anger to a tweet and model predicted disgust, it is not counted as an error and vice versa. 
                 It is because these labels are very close to each other and even a human being might have a problem to tell these two.
 
-                Accuracy: 0.760.
+                Accuracy: 0.860.
                 The number of studied samples: 50.
                 The fraction of all tweets: 0.002.

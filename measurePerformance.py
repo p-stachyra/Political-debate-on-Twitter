@@ -6,7 +6,7 @@ import sys
 
 from sklearn.metrics import confusion_matrix
 
-def assignPenalty(manual_labels, model_labels):
+def assignPenalty(manual_labels, model_labels1, model_labels2):
     """Evaluates if an inconsistency occurred. If the inconsistency is related to confusing anger
     with disgust, no penalty is assigned. It is because disgust is usually related to anger and vice
     versa.
@@ -16,21 +16,31 @@ def assignPenalty(manual_labels, model_labels):
     y_man = []
     correct = 0
     for i in range(len(manual_labels)):
-            if manual_labels[i] == model_labels[i]:
+            # the best option for accuracy:
+            # the model assigned the same label as the manually assigned label
+            # giving it the higest probability (model_labels1): primary dominant emotion according to the model
+
+
+            if (manual_labels[i] == model_labels1[i]):
                 correct += 1
                 # if the same, append the original labels
-                y_pred.append(model_labels[i])
+                y_pred.append(model_labels1[i])
                 y_man.append(manual_labels[i])
 
-            elif (manual_labels[i] in ["anger", "disgust"]) & (model_labels[i] in ["anger", "disgust"]):
+            elif (manual_labels[i] == model_labels2[i]):
+                # the second acceptable option:
+                # the model assigned the same label as the manually assigned label as its second choice.
+                # It gave the emotion the second higest probability (model_labels2):
+                # second dominant emotion according to the model
                 correct += 1
-                # if anger confused with disgust, append one of them to both lists
-                y_pred.append(model_labels[i])
-                y_man.append(model_labels[i])
+                # not penalizing the first decision, taking the second prediciton into account,
+                # so the model-generated labels can be assigned to both arrays for producing a confusion matrix
+                y_pred.append(model_labels2[i])
+                y_man.append(model_labels2[i])
 
             else:
-                # if incorrect, append the original labels
-                y_pred.append(model_labels[i])
+                # if none of the previous cases, append the original labels: penalize the error
+                y_pred.append(model_labels1[i])
                 y_man.append(manual_labels[i])
 
     return correct, len(manual_labels), y_pred, y_man
@@ -83,8 +93,11 @@ def measurePerformance(path_to_csv):
         performance_df = pd.read_csv(path_to_csv)
         array_manual_label = performance_df["Qualitative_label"]
         array_model_label = performance_df["Model_label"]
+        array_model_label2 = performance_df["Model_label2"]
         # measure the discrepancies
-        errors, labels_n, label_pred, label_man = assignPenalty(array_manual_label, array_model_label)
+        errors, labels_n, label_pred, label_man = assignPenalty(array_manual_label,
+                                                                array_model_label,
+                                                                array_model_label2)
 
         # save performance metrics
         plotConfusionMatrix(label_man,
@@ -103,4 +116,4 @@ def measurePerformance(path_to_csv):
     sys.exit(0)
 
 if __name__ == "__main__":
-    measurePerformance("qualitative_evaluation_emotions/qualitatively_analysed.csv")
+    measurePerformance("qualitative_evaluation_emotions/adjusted_qualitatively_analysed.csv")
