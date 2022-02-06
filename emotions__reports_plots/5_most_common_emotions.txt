@@ -1,3 +1,0 @@
-[democrat]:	[('others', 5394), ('disgust', 2637), ('joy', 985), ('anger', 665), ('fear', 115)]
-[republican]:	[('others', 4604), ('disgust', 3391), ('anger', 927), ('joy', 811), ('sadness', 104)]
-[swing]:	[('others', 5424), ('disgust', 2701), ('joy', 903), ('anger', 689), ('fear', 105)]
