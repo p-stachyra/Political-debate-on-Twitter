@@ -53,7 +53,7 @@ The outputs are directed to *emotions__reports_plots* folder - both text reports
 Example of the intensities distribution for different groups of states: <br>
 ![Emotions intensities](emotions__reports_plots/intensities_dominant_parties.png)
 #### Emotions analysis - Most distinctive words
-The notebook *dist_features_of_emotions_pre_results.ipynb* was used for analysing the discussions objects in a state-type-wise and emotion-wise manner.
+The notebook *dist_features_of_emotions_pre_results.ipynb* was used for analysing the discussions objects in a state-wise and emotion-wise manner.
 The analysis employed most distinctive words method. It was chosen, because it allows for doing a multiple comparison between specific groups, e.g. tweets with dominant emotion of anger from blue states versus red and swing state and returns tokens that have significantly higher frequency in the target corpus, compared to a reference corpus [3].
 Using this technique, the keywords were determined in the context of a particular emotion. <br> <br>
 
