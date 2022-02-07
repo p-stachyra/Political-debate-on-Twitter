@@ -26,9 +26,9 @@ In this repository, only the pre-processed dataset is available.
 
 ### Analysis
 
-The whole concept was based on the fact that the tweet's content, as well as the state in which the user posting it was registered.
+For the purpose of the analysis, not only the tweets' content was studied, but also the state in which the user posting it was registered.
 Therefore, based on user's location, the assumption of political affiliation of the state was made (dominantly Democrat/Republican or swing).
-The content of the tweet was studied in terms of emotions (their intensities as well as the frequencies of dominant emotions were studied). <br><br>
+The content of the tweet was studied in terms of emotions (their intensities as well as the frequencies of dominant emotions) and objects of these emotions (most distinctive words) in a state-wise manner. <br><br>
 
 #### Data Wrangling
 The Jupyter notebook file *Data Cleaning and Descriptives.ipynb* was used for the exploratory step of the analysis.
@@ -40,9 +40,9 @@ To pre-process the data, first and foremost, URLs and HTML tags were removed as 
 
 #### Emotions analysis - emotions intensities and frequencies of dominant emotions
 The module *extractEmotions.py* allows for performing emotion classification using Pysentimiento's 
-module functionality. The predictions which were evaluated qualitatively on 50 randomly selected tweets achieved accuracy of 86%.
-The technique of this performance measure was based on penalizing the model in case neither the emotion label with the highest probability assigned,
-nor the emotion label with the second-highest probability assigned corresponded to the emotion label assigned by human. The results of model performance's evaluation are availabe in *performance_metrics* folder. <br> <br>
+library. The predictions which were evaluated qualitatively on 50 randomly selected tweets, achieved accuracy of 86%.
+The technique of this performance measure was based on penalizing the model in case neither the emotion label with the highest probability,
+nor the emotion label with the second-highest probability assigned by the model corresponded to the emotion label assigned by human. The results of model performance's evaluation are available in *performance_metrics* folder. <br> <br>
 ![Confusion matrix](performance_metrics/confusion_matrix.png) <br>
 A seperate source file *measurePerformance.py* is responsible for generating outputs related to the used model's performance. <br>
 The module also assigns emotion intensity scores to the tweets and saves the modified 
@@ -55,10 +55,10 @@ Example of the intensities distribution for different groups of states: <br>
 #### Emotions analysis - Most distinctive words
 The notebook *dist_features_of_emotions_pre_results.ipynb* was used for analysing the discussions objects in a state-wise and emotion-wise manner.
 The analysis employed most distinctive words method. It was chosen, because it allows for doing a multiple comparison between specific groups, e.g. tweets with dominant emotion of anger from blue states versus red and swing state and returns tokens that have significantly higher frequency in the target corpus, compared to a reference corpus [3].
-Using this technique, the keywords were determined in the context of a particular emotion. <br> <br>
+Using this technique, the distinctive keywords were found in the context of a particular emotion. <br> <br>
 
 
-#### Sources
+#### References
 [1] Ṕerez, J., M., Giudici, J., C. & Luque, F. (2021). pysentimiento: A Python Toolkit for Sentiment Analysis and Social NLP tasks. Retrieved from https://arxiv.org/pdf/2106.09462.pdf <br>
 [2] Hui, M. (2020). US Election 2020 Tweets. Retrieved from https://www.kaggle.com/manchunhui/us-election-2020-tweets <br>
 [3] Pojanapunya, P. & Todd, R., W. (2018). Log-likelihood and odds ratio: Keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory 1(14), 133-167. https://doi.org/10.1515/cllt-2015-0030
