@@ -32,7 +32,7 @@ The content of the tweet was studied in terms of emotions (their intensities as 
 
 #### Data Wrangling
 The Jupyter notebook file *Data Cleaning and Descriptives.ipynb* was used for the exploratory step of the analysis.
-The dataset was imbalanced, thus 10000 most-liked tweets for each state were used as the target dataset. <br> <br>
+The dataset was imbalanced, thus 10000 most-liked tweets for each state were used as the target sample. <br> <br>
 
 #### Data pre-processing
 The directory *pre processing* contains notebooks in which the methods for data pre-processing were used in this study.
